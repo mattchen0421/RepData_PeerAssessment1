@@ -24,8 +24,8 @@ step_per_day <- tapply(activity$steps, activity$date, FUN = sum)
 step_mean <- mean(step_per_day, na.rm = TRUE)
 step_median <- median(step_per_day, na.rm = TRUE)
 ```
-the mean of the total number of steps taken per day is `step_mean`
-the mean of the total number of steps taken per day is `step_median`
+the mean of the total number of steps taken per day is `r step_mean`   
+the mean of the total number of steps taken per day is `r step_median`
 
 ## What is the average daily activity pattern?
 ```{r}
@@ -38,13 +38,13 @@ ggplot(activity_avg) +
 
 step_max <- activity_avg[which.max(activity_avg$mean_step), 1]
 ```
-the interval contains the maximum number of steps is `step_max`
+the interval contains the maximum number of steps is `r step_max`
 
 ## Imputing missing values
 ```{r}
 na_num <- sum(is.na(activity))
 ```
-there are `na_num` NA
+there are `r na_num` NA  
 replace NA with the mean for the interval
 ```{r}
 activity1 <- left_join(activity, activity_avg, "interval")
@@ -58,8 +58,8 @@ step_per_day1 <- tapply(activity1$steps, activity1$date, FUN = sum)
 step_mean1 <- mean(step_per_day1, na.rm = TRUE)
 step_median1 <- median(step_per_day1, na.rm = TRUE)
 ```
-new mean of the total number of steps taken per day is `step_mean1`
-new mean of the total number of steps taken per day is `step_median1`
+new mean of the total number of steps taken per day is `r step_mean1`  
+new mean of the total number of steps taken per day is `r step_median1`  
 there are little difference between the new value and the estimated value
 
 ## Are there differences in activity patterns between weekdays and weekends?
